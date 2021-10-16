@@ -22,10 +22,6 @@
       apt:
         name: python3
         state: present
-    - name: Install docker-py python module
-      apt:
-        name: docker-py
-        state: present
     - name: Start the container
       docker_container:
         name: deployment-using-ansible-cm-tool
