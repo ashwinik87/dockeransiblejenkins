@@ -18,9 +18,13 @@
     #  lineinfile: "dest=/etc/default/docker regexp=^DOCKER_OPTS line=DOCKER_OPTS='--insecure-registry 10.11.0.0/16'"
 
     - service: name=docker state=restarted
+    - name: Install docker-py python module
+      apt:
+        name: docker-py
+        state: present
     - name: Start the container
       docker_container:
-        name: hariapp
+        name: deployment-using-ansible-cm-tool
         image: "ashwinik87/deployment-using-ansible-cm-tool:{{DOCKER_TAG}}"
         state: started
         published_ports:
